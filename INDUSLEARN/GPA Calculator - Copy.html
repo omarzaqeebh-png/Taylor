@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حساب المعدل</title>
+    <style>
+        * {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #2a4a7a 0%, #1a3a6a 100%); /* خلفية زرقاء فاتحة متناسقة */
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        nav {
+            background: linear-gradient(135deg, #2a4a7a 0%, #1a3a6a 100%);
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .navbar img {
+            height: 40px;
+            order: 2;
+            margin-left: 0%; 
+        }
+        
+        .navbar-links {
+            display: flex;
+            gap: 25px;
+        }
+        
+        .navbar-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-links a:hover {
+            color: #aac8ff;
+        }
+        
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 3px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .menu {
+            display: none;
+            flex-direction: column;
+            background-color: #2a4a7a;
+            position: absolute;
+            top: 70px;
+            right: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+        
+        .menu a {
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .menu a:hover {
+            background-color: #3a5a8a;
+        }
+        
+        .menu.active {
+            display: flex;
+        }
+        
+        h2 {
+            text-align: center;
+            color: #e6f0ff;
+            margin-top: 30px;
+            font-size: 24px;
+        }
+        
+        #gpaTable {
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        
+        #gpaTable th {
+            background: linear-gradient(135deg, #4a7bd9 0%, #3a6bc8 100%);
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        #gpaTable td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e0e9ff;
+            text-align: center;
+        }
+        
+        #gpaTable tr:last-child td {
+            border-bottom: none;
+        }
+        
+        #gpaTable tr:hover {
+            background-color: #f0f7ff;
+        }
+        
+        .course-name {
+            padding: 8px 12px;
+            border: 1px solid #d1e0ff;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 200px;
+        }
+        
+        .grade-select {
+            padding: 8px 12px;
+            border: 1px solid #d1e0ff;
+            border-radius: 8px;
+            background-color: white;
+        }
+        
+        .credits-input {
+            padding: 8px 12px;
+            border: 1px solid #d1e0ff;
+            border-radius: 8px;
+            width: 60px;
+            text-align: center;
+        }
+        
+        .delete-btn {
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .delete-btn:hover {
+            background-color: #ff5252;
+        }
+        
+        .add-btn, .calculate-btn {
+            display: block;
+            margin: 20px auto;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .add-btn {
+            background-color: #4a7bd9;
+            color: white;
+            box-shadow: 0 4px 8px rgba(74, 123, 217, 0.3);
+        }
+        
+        .add-btn:hover {
+            background-color: #3a6bc8;
+        }
+        
+        #result {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 10px;
+            max-width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: rgba(255,255,255,0.9);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .red {
+            color: #d32f2f;
+            border-left: 5px solid #d32f2f;
+        }
+        
+        .yellow {
+            color: #ff8f00;
+            border-left: 5px solid #ff8f00;
+        }
+        
+        .green {
+            color: #388e3c;
+            border-left: 5px solid #388e3c;
+        }
+        
+        .cumulative-container {
+            margin: 30px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 16px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            width: 90%;
+            max-width: 500px;
+        }
+        
+        .cumulative-container h2 {
+            color: #2a4a7a;
+            margin-bottom: 20px;
+            font-size: 22px;
+            text-align: center;
+        }
+        
+        .input-group {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #3a5a8a;
+            font-weight: bold;
+        }
+        
+        .cumulative-container input {
+            padding: 10px 15px;
+            width: 80%;
+            max-width: 250px;
+            border: 2px solid #d1e0ff;
+            border-radius: 12px;
+            font-size: 16px;
+            text-align: center;
+        }
+        
+        .cumulative-container input:focus {
+            border-color: #4a7bd9;
+            outline: none;
+        }
+        
+        #cumulativeResult {
+            margin-top: 20px;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #2a4a7a;
+            background-color: rgba(240, 247, 255, 0.7);
+            border-radius: 10px;
+            text-align: center;
+            border-left: 5px solid #4a7bd9;
+        }
+        
+        .calculate-btn {
+            background: linear-gradient(135deg, #4a7bd9 0%, #3a6bc8 100%);
+            color: white;
+            box-shadow: 0 4px 8px rgba(74, 123, 217, 0.3);
+        }
+        
+        .calculate-btn:hover {
+            background: linear-gradient(135deg, #3a6bc8 0%, #2a5ab7 100%);
+        }
+
+        @media (max-width: 768px) {
+            .navbar-links {
+                display: none;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .navbar img {
+                height: 35px;
+            }
+            
+            #gpaTable {
+                width: 95%;
+                font-size: 14px;
+            }
+            
+            .cumulative-container {
+                width: 95%;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="navbar">
+            <img src="logo web+team.png" alt="شعار الموقع">
+            <div class="hamburger" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="navbar-links">
+                <a href="index.html"><h4>الصفحة الرئيسية</h4></a>
+                <a href="courses.html"><h4>المواد الدراسية</h4></a>
+                <a href="Industrial engineering.html"><h4>عن الهندسة الصناعية</h4></a>
+                <a href="GPA Calculator.html"><h4>حساب المعدل</h4></a>
+                <a href="about indus.html"><h4>عن الموقع</h4></a>
+            </div>
+            <div class="menu">
+                <a href="index.html">الصفحة الرئيسية</a>
+                <a href="courses.html">المواد الدراسية</a>
+                <a href="Industrial engineering.html">عن الهندسة الصناعية</a>
+                <a href="GPA Calculator.html">حساب المعدل</a>
+                <a href="about indus.html">عن الموقع</a>
+            </div>
+        </div>
+    </nav>
+
+    <h2>حساب المعدل الفصلي</h2>
+
+    <table id="gpaTable">
+        <tr>
+            <th>المادة (اختياري)</th>
+            <th>العلامة</th>
+            <th>الساعات المعتمدة</th>
+            <th>حذف</th>
+        </tr>
+    </table>
+
+    <button class="add-btn" onclick="addCourse()">إضافة مادة</button>
+    <button class="calculate-btn" onclick="calculateSemesterGPA()">حساب المعدل الفصلي</button>
+
+    <div id="result"></div>
+
+    <div class="cumulative-container">
+        <h2>حساب المعدل التراكمي</h2>
+        
+        <div class="input-group">
+            <label for="prevHours">عدد الساعات السابقة</label>
+            <input type="number" id="prevHours" min="1" placeholder="أدخل عدد الساعات">
+        </div>
+        
+        <div class="input-group">
+            <label for="prevGPA">المعدل التراكمي السابق</label>
+            <input type="text" id="prevGPA" placeholder="أدخل المعدل (مثال: 3.75)" inputmode="decimal">
+        </div>
+        
+        <button class="calculate-btn" onclick="calculateCumulativeGPA()">حساب المعدل التراكمي</button>
+        
+        <div id="cumulativeResult"></div>
+    </div>
+
+    <script>
+        let courseCount = 0;
+
+        function addCourse() {
+            if (courseCount >= 12) {
+                alert("يمكنك إضافة حتى 12 مادة فقط.");
+                return;
+            }
+
+            let table = document.getElementById("gpaTable");
+            let row = table.insertRow(-1);
+
+            let cell1 = row.insertCell(0);
+            let cell2 = row.insertCell(1);
+            let cell3 = row.insertCell(2);
+            let cell4 = row.insertCell(3);
+
+            cell1.innerHTML = `<input type="text" class="course-name" placeholder="اسم المادة (اختياري)">`;
+            cell2.innerHTML = `  
+                <select class="grade-select">
+                    <option value="4.20">A+</option>
+                    <option value="4.00">A</option>
+                    <option value="3.75">A-</option>
+                    <option value="3.50">B+</option>
+                    <option value="3.25">B</option>
+                    <option value="3.00">B-</option>
+                    <option value="2.75">C+</option>
+                    <option value="2.50">C</option>
+                    <option value="2.25">C-</option>
+                    <option value="2.00">D+</option>
+                    <option value="1.75">D</option>
+                    <option value="1.50">D-</option>
+                    <option value="0.50">F</option>
+                </select>
+            `;
+            cell3.innerHTML = `<input type="number" class="credits-input" min="1" value="3">`;
+            cell4.innerHTML = `<button class="delete-btn" onclick="deleteCourse(this)">حذف</button>`;
+
+            courseCount++;
+        }
+
+        function deleteCourse(button) {
+            let row = button.parentElement.parentElement;
+            row.remove();
+            courseCount--;
+        }
+
+        function getGradeSymbol(gpa) {
+            if (gpa >= 4.20) return "A+";
+            if (gpa >= 4.00) return "A";
+            if (gpa >= 3.75) return "A-";
+            if (gpa >= 3.50) return "B+";
+            if (gpa >= 3.25) return "B";
+            if (gpa >= 3.00) return "B-";
+            if (gpa >= 2.75) return "C+";
+            if (gpa >= 2.50) return "C";
+            if (gpa >= 2.25) return "C-";
+            if (gpa >= 2.00) return "D+";
+            if (gpa >= 1.75) return "D";
+            if (gpa >= 1.50) return "D-";
+            return "F";
+        }
+
+        function calculateSemesterGPA() {
+            let totalPoints = 0;
+            let totalCredits = 0;
+            let rows = document.querySelectorAll("#gpaTable tr");
+
+            rows.forEach((row, index) => {
+                if (index === 0) return;
+                let grade = row.querySelector(".grade-select").value;
+                let credits = parseFloat(row.querySelector(".credits-input").value);
+
+                totalPoints += parseFloat(grade) * credits;
+                totalCredits += credits;
+            });
+
+            if (totalCredits === 0) {
+                alert("الرجاء إضافة مواد أولاً");
+                return;
+            }
+
+            let semesterGPA = totalPoints / totalCredits;
+            let gradeSymbol = getGradeSymbol(semesterGPA);
+            let resultDiv = document.getElementById("result");
+            resultDiv.innerText = `المعدل الفصلي: ${semesterGPA.toFixed(2)} (${gradeSymbol})`;
+
+            if (semesterGPA < 2.00) {
+                resultDiv.className = "red";
+            } else if (semesterGPA >= 2.00 && semesterGPA <= 3.75) {
+                resultDiv.className = "yellow";
+            } else if (semesterGPA >= 4.00) {
+                resultDiv.className = "green";
+            }
+        }
+
+        function calculateCumulativeGPA() {
+            let semesterResult = document.getElementById("result").innerText.match(/([\d.]+)/);
+            if (!semesterResult) {
+                alert("الرجاء حساب المعدل الفصلي أولاً");
+                return;
+            }
+
+            let semesterGPA = parseFloat(semesterResult[1]);
+            let semesterCredits = 0;
+
+            let rows = document.querySelectorAll("#gpaTable tr");
+            rows.forEach((row, index) => {
+                if (index === 0) return;
+                let credits = parseFloat(row.querySelector(".credits-input").value);
+                semesterCredits += credits;
+            });
+
+            let prevHours = parseInt(document.getElementById("prevHours").value);
+            let prevGPA = parseFloat(document.getElementById("prevGPA").value);
+
+            if (isNaN(prevHours) || isNaN(prevGPA)) {
+                alert("الرجاء إدخال عدد الساعات والمعدل التراكمي السابق بشكل صحيح");
+                return;
+            }
+
+            let totalPoints = (semesterGPA * semesterCredits) + (prevGPA * prevHours);
+            let totalCredits = semesterCredits + prevHours;
+            let cumulativeGPA = totalPoints / totalCredits;
+            let gradeSymbol = getGradeSymbol(cumulativeGPA);
+
+            let cumulativeResultDiv = document.getElementById("cumulativeResult");
+            cumulativeResultDiv.innerText = `المعدل التراكمي الجديد: ${cumulativeGPA.toFixed(2)} (${gradeSymbol})`;
+            
+            if (cumulativeGPA < 2.00) {
+                cumulativeResultDiv.style.color = "#d32f2f";
+                cumulativeResultDiv.style.borderLeftColor = "#d32f2f";
+            } else if (cumulativeGPA >= 2.00 && cumulativeGPA <= 3.75) {
+                cumulativeResultDiv.style.color = "#ff8f00";
+                cumulativeResultDiv.style.borderLeftColor = "#ff8f00";
+            } else if (cumulativeGPA >= 4.00) {
+                cumulativeResultDiv.style.color = "#388e3c";
+                cumulativeResultDiv.style.borderLeftColor = "#388e3c";
+            }
+        }
+
+        function toggleMenu() {
+            const menu = document.querySelector('.menu');
+            const hamburger = document.querySelector('.hamburger');
+            menu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        }
+
+        window.onload = function() {
+            addCourse();
+        };
+    </script>
+</body>
+</html>

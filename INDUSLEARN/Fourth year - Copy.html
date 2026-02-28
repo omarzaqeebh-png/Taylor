@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المستوى الرابع</title>
+    <link rel="icon" href="logo web.png">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            direction: rtl;
+            background: linear-gradient(135deg, #08507a 0%, #222b61 50%, #094f6a 100%);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(90deg, #0b6192, #222b61);
+            padding: 15px 30px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar img {
+            max-height: 60px;
+            width: auto;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 15px;
+            direction: ltr;
+            flex-direction: row-reverse;
+        }
+
+        .navbar-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 8px 15px;
+            border-radius: 8px;
+            transition: background-color 0.4s ease;
+        }
+
+        .navbar-links a:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            padding: 12px;
+        }
+
+        .hamburger div {
+            width: 28px;
+            height: 3px;
+            background-color: white;
+        }
+
+        .menu {
+            display: none;
+            position: absolute;
+            top: 70px;
+            right: 10px;
+            width: 200px;
+            background: #004e64;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            border-radius: 8px;
+            animation: slideIn 0.4s ease forwards;
+        }
+
+        .menu a {
+            display: block;
+            padding: 8px;
+            color: white;
+            text-decoration: none;
+            text-align: right;
+            font-size: 14px;
+            transition: background-color 0.4s ease;
+        }
+
+        .menu a:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .menu.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar-links {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .navbar img {
+                order: 2;
+            }
+            .hamburger {
+                order: 1;
+            }
+        }
+
+        .container {
+            width: 80%;
+            margin: 100px auto 0;
+            padding: 20px;
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .course-card {
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            backdrop-filter: blur(12px);
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .course-card h3 {
+            color: #004e64;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .course-card a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #004e64;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .course-card a:hover {
+            background-color: #08507a;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+            }
+
+            .course-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="navbar">
+            <div class="navbar-links">
+                <a href="index.html"><h4>الصفحة الرئيسية</h4></a>
+                <a href="courses.html"><h4>المواد الدراسية</h4></a>
+                <a href="Industrial engineering.html"><h4>عن الهندسة الصناعية</h4></a>
+                <a href="GPA Calculator.html"><h4>حساب المعدل</h4></a>
+                <a href="about indus.html"><h4>عن الموقع</h4></a>
+            </div>
+            <img src="logo web+team.png" alt="Logo">
+            <div class="hamburger" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="menu">
+                <a href="index.html">الصفحة الرئيسية</a>
+                <a href="courses.html">المواد الدراسية</a>
+                <a href="Industrial engineering.html">عن الهندسة الصناعية</a>
+                <a href="GPA Calculator.html">حساب المعدل</a>
+                <a href="about indus.html">عن الموقع</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="course-grid">
+            <div class="course-card">
+                <h3>Cost</h3>
+                <a href="https://drive.google.com/drive/folders/1Kt1LuQv6nWNzxCEQ3QNAmM3hH5Jqqwww?usp=drive_link" target="_blank">فتح المادة</a>
+            </div>
+
+            <div class="course-card">
+                <h3>Human  </h3>
+                <a href="https://drive.google.com/drive/folders/10RKr4-cxRvU8iMKApJr_kIA8mdgzwDK7?usp=drive_link" target="_blank">فتح المادة</a>
+            </div>
+
+            <div class="course-card">
+                <h3>Quality control  </h3>
+                <a href="https://drive.google.com/drive/folders/1wI3sfQYvadBbjDxZDqCP6eIMWaqRp7ps?usp=drive_link" target="_blank">فتح المادة</a>
+            </div>
+            
+            <div class="course-card">
+                <h3>OM </h3>
+                <a href="https://drive.google.com/drive/folders/1RXVKuIZmJIxHhUS63xOthItW_zf241xe?usp=drive_link" target="_blank">فتح المادة</a>
+            </div>
+            <div class="course-card">
+                <h3> Control  </h3>
+                <a href="https://drive.google.com/drive/folders/1aTTv62qpN7JO-mOoFDhLmLfiqzi2OCYM?usp=drive_link" target="_blank">فتح المادة</a>
+            </div>
+
+            <div class="course-card">
+                <h3> Machinery </h3>
+                <a href="https://drive.google.com/drive/folders/1fcnlHgI0WmF23EKehkyRjhaYkFR2eU9-?usp=drive_link" target="_blank">فتح المادة</a>
+            </div>
+
+            <div class="course-card">
+                <h3> Production2</h3>
+                <a href="https://drive.google.com/drive/folders/1poF81Y6hhGqHk-jyJb73DqxnLJSnKGDp?usp=drive_link" target="_blank">فتح المادة</a>
+            </div>
+            <div class="course-card">
+                <h3> Or2</h3>
+                <a href="https://drive.google.com/drive/folders/1_7_6VdVJisX8sU2ZEpsnwIzJIRUC89lb?usp=drive_link" target="_blank">فتح المادة</a>
+            </div>
+            <div class="course-card">
+                <h3> Management</h3>
+                <a href="https://drive.google.com/drive/folders/1AK_jkeaqETxknzvau_rmnMgVx73pQUpD?usp=drive_link" target="_blank">فتح المادة</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector('.menu').classList.toggle('active');
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,367 @@
+/* إعادة تفعيل التمرير */
+html, body {
+    overflow: auto; /* تمكين التمرير */
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    background: linear-gradient(90deg, #08507a, #222b61);
+    font-family: 'Cairo', sans-serif;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* تعديل المحاذاة */
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* البار ثابت في أعلى الصفحة */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(90deg, #0b6192, #222b61);
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navbar img {
+    max-height: 50px;
+    width: auto;
+}
+
+.navbar-links {
+    display: flex;
+    gap: 20px;
+    direction: ltr;
+    flex-direction: row-reverse;
+}
+
+.navbar-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-left: 10px;
+    margin-right: 30px;
+}
+
+.navbar-links a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    margin-left: 10px;
+    padding: 20px;
+}
+
+.hamburger div {
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.navbar-links-mobile {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background: #002244;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.navbar-links-mobile a {
+    color: white;
+    text-decoration: none;
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 5px;
+    text-align: right;
+    transition: background-color 0.4s ease;
+}
+
+.navbar-links-mobile a:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.navbar-links-mobile.show {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .navbar-links {
+        display: none;
+    }
+    .hamburger {
+        display: flex;
+    }
+
+    .navbar img {
+        max-height: 40px;
+    }
+
+    .navbar {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        background-size: 100%;
+        background-position: center center;
+        font-size: 14px; /* تقليل حجم الخط للشاشات الصغيرة */
+    }
+
+    .navbar-links-mobile a {
+        font-size: 14px; /* تقليل حجم الخط في القائمة المتنقلة */
+    }
+
+    .circle {
+        width: 100px; /* تقليل حجم الدوائر */
+        height: 100px;
+        font-size: 14px; /* تقليل حجم الخط داخل الدوائر */
+    }
+
+    .green-frame {
+        width: 95%; /* زيادة عرض الإطار ليشغل معظم الشاشة */
+        padding: 10px; /* تقليل الحشو */
+    }
+
+    .upload-button {
+        font-size: 14px; /* تقليل حجم نص زر التحميل */
+        padding: 8px 16px; /* تقليل حجم الزر */
+    }
+}
+
+/* حجم الصورة للصفحة الرئيسية */
+.main-image {
+    max-width: 100%; /* لتكون الصورة متجاوبة مع عرض الشاشة */
+    height: auto; /* للحفاظ على تناسب الصورة */
+    border-radius: 15px; /* زوايا مدورة */
+    margin-bottom: 60px;
+}
+
+/* حجم الصورة للشاشات الكبيرة */
+@media (min-width: 768px) {
+    .main-image {
+        max-width: 800px; /* حجم مناسب للشاشات الكبيرة */
+        margin-bottom: 60px;
+    }
+}
+
+/* حجم الصورة للشاشات الصغيرة */
+@media (max-width: 767px) {
+    .main-image {
+        max-width: 100%; /* تشغل العرض الكامل للشاشة */
+        margin-bottom: 60px;
+    }
+}
+.icon-container {
+    position: fixed;
+    right: 20px; 
+    bottom: 20px; /* المسافة الكلية من الأسفل */
+    display: flex;
+    flex-direction: column;
+    gap: 1px; /* المسافة بين الأيقونات */
+    z-index: 100;
+}
+
+.icon-container img {
+    width: 40px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.icon-container img:hover {
+    transform: scale(1.1);
+}
+.facebook-icon {
+    width: 2px;
+}
+footer {
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 10px 0;
+    z-index: 1000;
+    margin-top: auto;
+}
+
+/* البار الفاصل */
+.separator {
+    width: 100%;
+    background: linear-gradient(90deg, #0b6192, #222b61); /* نفس لون البار العلوي */
+    padding: 15px 0; /* زيادة الحشوة لجعل البار أكثر وضوحًا */
+    text-align: center;
+    color: white;
+    font-size: 24px; /* زيادة حجم الخط */
+    font-weight: bold;
+    margin: 20px 0;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2); /* ظل مشابه للبار العلوي */
+}
+
+.separator a {
+    color: white;
+    text-decoration: none;
+}
+
+.separator a:hover {
+    text-decoration: underline; /* إضافة خط تحت النص عند التمرير */
+}
+
+/* إطار أخضر للصفحة 1 */
+.green-frame {
+    width: 90%;
+    max-width: 800px;
+    border-radius: 20px; /* زوايا مدورة */
+    padding: 20px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden; /* لمنع تجاوز الصورة للإطار */
+}
+
+.green-frame img {
+    width: 100%; /* تغطية الإطار بالكامل */
+    height: auto;
+    border-radius: 15px; /* زوايا مدورة للصورة */
+    margin-bottom: 20px;
+}
+
+/* زر تحميل الصورة */
+.upload-button {
+    background-color: #08507a; /* لون الزر يتناسب مع الصفحة */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.upload-button:hover {
+    background-color: #003d4f; /* لون أخضر غامق عند التمرير */
+    transform: scale(1.05); /* تكبير الزر قليلاً */
+}
+
+.upload-button:active {
+    transform: scale(0.95); /* تصغير الزر عند النقر */
+}
+
+/* تحسين تصميم الدوائر */
+.circle {
+    width: 150px;
+    height: 150px;
+    background-color: white; /* لون الخلفية أبيض */
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #08507a; /* لون النص يتناسب مع التصميم */
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 10px auto;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* ظل خفيف */
+}
+
+.circle::before {
+    content: "";
+    position: absolute;
+    top: 0; /* التدرج يبدأ من الأعلى */
+    left: 0;
+    width: 100%;
+    height: 100%; /* التدرج يغطي الدائرة بالكامل */
+    background: linear-gradient(120deg, rgba(0, 95, 115, 0.1), rgba(0, 147, 150, 0.1)); /* تأثير التدرج */
+    transform: rotate(45deg);
+    animation: rotateGradient 6s linear infinite; /* إضافة حركة للتدرج */
+}
+
+@keyframes rotateGradient {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.circle:hover {
+    transform: translateY(-10px); /* تحريك الدائرة للأعلى */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25); /* زيادة الظل */
+}
+
+.circle i {
+    font-size: 30px;
+    margin-bottom: 10px;
+    color: #08507a; /* لون الأيقونة */
+}
+
+/* تحسين التخطيط للشاشات الصغيرة */
+@media (max-width: 767px) {
+    .circle {
+        width: 120px;
+        height: 120px;
+        font-size: 14px;
+    }
+
+    .circle i {
+        font-size: 24px;
+    }
+}
+
+/* تحسين العناوين */
+h1 {
+    font-size: 24px;
+    color: #ffffff;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #0b6192;
+    padding-bottom: 10px;
+}
+
+/* تحسين التخطيط للشاشات الصغيرة */
+@media (max-width: 767px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .section {
+        margin-bottom: 40px;
+    }
+
+    .circle {
+        width: 120px;
+        height: 120px;
+    }
+}
