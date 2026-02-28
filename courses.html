@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HG7G4Z5BGF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HG7G4Z5BGF');
+</script>
+    <meta name="google-site-verification" content="lE9IlYiH8P7T51vsbXhKC6hE_RfoY2osgE15OVzHeZ4" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المواد الدراسية</title>
+    <link rel="stylesheet" href="courses.css">
+    <script src="script.js" defer></script>
+    <link rel="icon" href="logo web.png" type="image/png">
+    
+</head>
+<body>
+    <nav class="navbar">
+        <img src="logo team.png" alt="Logo">
+        <div class="navbar-links">
+            <a href="index.html"><h4>الصفحة الرئيسية</h4></a>
+            <a href="courses.html"><h4>المواد الدراسية</h4></a>
+            <a href="Industrial engineering.html"><h4>عن الهندسة الصناعية</h4></a>
+            <a href="GPA Calculator.html"><h4>حساب المعدل</h4></a>
+            <a href="about indus.html"><h4>عن الموقع</h4></a>
+        </div>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="navbar-links-mobile">
+            <a href="index.html">الصفحة الرئيسية</a>
+            <a href="courses.html">المواد الدراسية</a>
+            <a href="Industrial engineering.html">عن الهندسة الصناعية</a>
+            <a href="GPA Calculator.html">حساب المعدل</a>
+            <a href="about indus.html">عن الموقع</a>
+        </div>
+    </nav>
+
+    <div class="center-text">
+        <h3>اختر المستوى الدراسي من هنا</h3>
+    </div>
+
+    <div class="box-container">
+        <a href="first year.htm" target="_blank" class="box">المستوى الدراسي  <br>الأول</a>
+        <a href="second year.html" target="_blank" class="box">المستوى الدراسي  <br>الثاني</a>
+        <a href="third year.html" target="_blank" class="box"> المستوى الدراسي <br>الثالث</a>
+        <a href="Fourth year.html" target="_blank" class="box">المستوى الدراسي  <br>الرابع</a>
+        <a href="Fifth year.html" target="_blank" class="box">المستوى الدراسي <br>الخامس</a>
+        <a href="laps.html" target="_blank" class="box" > المواد   <br>العملية  </a>
+        <a href="Additional materials.html" target="_blank" class="box">المواد<br>الإضافية</a>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('.navbar-links-mobile');
+            menu.classList.toggle('show'); // Toggle the class to show/hide menu
+        }
+    </script>
+</body>
+</html>

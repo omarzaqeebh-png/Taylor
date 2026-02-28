@@ -1,0 +1,222 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #08507a 0%, #222b61 50%, #4f739e 100%);
+    color: #eee;
+}
+.menu {
+    display: none;
+    position: absolute;
+    top: 60px; /* نزّل القائمة تحت الشريط */
+    right: 0;
+    background-color: #002244;
+    width: 200px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.menu a {
+    display: block;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+.menu a:hover {
+    background-color: #004488;
+}
+
+.menu.active {
+    display: block;
+}
+
+
+h2 {
+    text-align: center;
+    color: #d9f2ff;
+    margin-top: 100px;
+    font-size: 28px;
+}
+
+table {
+    width: 90%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background: linear-gradient(90deg, #0b6192, #2a4d7e);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(12px);
+    margin-top: 80px;
+}
+
+table, th, td {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    color: white;
+}
+
+th {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+tr:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.delete-btn {
+    background-color: #ff5c5c;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background-color: #ff4040;
+}
+
+#result {
+    width: 300px;
+    margin: 20px auto;
+    padding: 15px;
+    font-size: 1.2em;
+    border-radius: 10px;
+    text-align: center;
+    background-color: rgba(198, 236, 227, 0.85);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+    backdrop-filter: blur(12px);
+}
+
+.red {
+    background-color: rgba(248, 215, 218, 0.85);
+    color: #721c24;
+}
+
+.yellow {
+    background-color: rgba(255, 243, 205, 0.85);
+    color: #856404;
+}
+
+.green {
+    background-color: rgba(212, 237, 218, 0.85);
+    color: #155724;
+}
+
+.add-btn, .calculate-btn {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    background: linear-gradient(90deg, #0b6192, #2a4d7e);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.4s ease;
+}
+
+.add-btn:hover, .calculate-btn:hover {
+    background: linear-gradient(90deg, #08507a, #1e3b68);
+}
+
+.grade-select, .credits-input, .course-name {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    width: 100%;
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.grade-select option {
+    background-color: #0b6192;
+    color: white;
+}
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(90deg, #08507a, #222b61);
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navbar img {
+    max-height: 60px;
+    width: auto;
+}
+
+.navbar-links {
+    display: flex;
+    gap: 20px;
+    direction: ltr;
+    flex-direction: row-reverse;
+}
+
+.navbar-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-left: 10px;
+    margin-right: 30px;
+}
+
+.navbar-links a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 10px;
+    padding-right: 40px;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar-links {
+        display: none;
+    }
+    .hamburger {
+        display: flex;
+    }
+}
+
+@media (max-width: 480px) {
+    table {
+        width: 100%;
+    }
+}

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://induslearn.netlify.app/</loc>
+  <lastmod>2025-02-19T01:23:25+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://induslearn.netlify.app/courses</loc>
+  <lastmod>2025-02-19T01:23:25+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://induslearn.netlify.app/industrial%20engineering</loc>
+  <lastmod>2025-02-19T01:23:25+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://induslearn.netlify.app/gpa%20calculator</loc>
+  <lastmod>2025-02-19T01:23:25+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://induslearn.netlify.app/about%20indus.html</loc>
+  <lastmod>2025-02-19T01:23:25+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://induslearn.netlify.app/first%20year.htm</loc>
+  <lastmod>2025-02-19T01:23:25+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://induslearn.netlify.app/second%20year.html</loc>
+  <lastmod>2025-02-19T01:23:25+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://induslearn.netlify.app/third%20year.html</loc>
+  <lastmod>2025-02-19T01:23:25+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://induslearn.netlify.app/fourth%20year</loc>
+  <lastmod>2025-02-19T01:23:25+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://induslearn.netlify.app/fifth%20year</loc>
+  <lastmod>2025-02-19T01:23:25+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://induslearn.netlify.app/additional%20materials</loc>
+  <lastmod>2025-02-19T01:23:25+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
+</urlset>

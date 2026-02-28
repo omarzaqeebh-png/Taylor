@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HG7G4Z5BGF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HG7G4Z5BGF');
+</script>
+  <meta name="google-site-verification" content="lE9IlYiH8P7T51vsbXhKC6hE_RfoY2osgE15OVzHeZ4" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Industrial Engineering</title>
+  <link rel="icon" href="loggo.png">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background: linear-gradient(90deg, #08507a, #222b61);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      overflow-y: auto;
+      padding-top: 80px;
+    }
+    .container {
+      background: rgba(255, 255, 255, 0.85);
+      max-width: 900px;
+      width: 90%;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(12px);
+      animation: fadeIn 1.5s ease-in-out;
+      transform: scale(0.95);
+      margin-top: 50px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 36px;
+      color: #004e64;
+    }
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+    }
+    .info-card {
+      background: #f0f9ff;
+      padding: 30px;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      transition: transform 0.4s, box-shadow 0.4s;
+      position: relative;
+      overflow: hidden;
+    }
+    .info-card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    }
+    .info-card::before {
+      content: "";
+      position: absolute;
+      top: -100%;
+      left: 0;
+      width: 100%;
+      height: 300%;
+      background: linear-gradient(120deg, rgba(0, 95, 115, 0.1), rgba(0, 147, 150, 0.1));
+      transform: rotate(45deg);
+      transition: top 0.5s;
+    }
+    .info-card:hover::before {
+      top: 0%;
+    }
+    .info-card h2 {
+      color: #004e64;
+      margin-bottom: 15px;
+    }
+    .info-card p {
+      color: #666;
+    }
+    @media (max-width: 600px) {
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(90deg, #0b6192, #222b61);
+      padding: 15px 30px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .navbar img {
+      max-height: 60px;
+      width: auto;
+    }
+
+    .navbar-links {
+      display: flex;
+      gap: 15px;
+      direction: ltr;
+      flex-direction: row-reverse;
+    }
+
+    .navbar-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      padding: 8px 15px;
+      border-radius: 8px;
+      transition: background-color 0.4s ease;
+    }
+
+    .navbar-links a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+      padding: 12px;
+    }
+
+    .hamburger div {
+      width: 28px;
+      height: 3px;
+      background-color: white;
+    }
+
+    .menu {
+      display: none;
+      position: absolute;
+      top: 70px;
+      right: 30px;
+      width: 180px;
+      background: #002244;
+      padding: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      transform: translateY(-20px);
+      transition: transform 0.4s ease, opacity 0.4s ease;
+      opacity: 0;
+      border-radius: 8px;
+    }
+    .menu.active {
+      display: block;
+      transform: translateY(0);
+      opacity: 1;
+    }
+    .menu a {
+      display: block;
+      padding: 8px;
+      color: white;
+      text-decoration: none;
+      text-align: right;
+      transition: background-color 0.4s ease;
+      font-size: 14px;
+    }
+    .menu a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 10px 15px; /* تقليل المساحة الداخلية للبار */
+      }
+
+      .navbar img {
+        max-height: 40px; /* تصغير حجم الشعار */
+      }
+
+      .navbar-links {
+        display: none;
+      }
+
+      .navbar-links a {
+        font-size: 14px; /* تصغير حجم الخط في الروابط */
+        padding: 6px 10px; /* تقليل المساحة الداخلية للروابط */
+      }
+
+      .menu a {
+        font-size: 12px; /* تصغير حجم الخط في القائمة المنسدلة */
+      }
+
+      .hamburger {
+        display: flex;
+        padding: 8px; /* تقليل حجم الهامبرغر */
+      }
+
+      .hamburger div {
+        width: 24px; /* تصغير عرض خطوط الهامبرغر */
+        height: 2px; /* تصغير ارتفاع خطوط الهامبرغر */
+      }
+    }
+  </style>
+  <script>
+    function toggleMenu() {
+      document.querySelector('.menu').classList.toggle('active');
+    }
+  </script>
+</head>
+
+<body>
+  <nav>
+    <div class="navbar">
+      <img src="logo team.png" alt="Logo">
+      <div class="hamburger" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="navbar-links">
+        <a href="index.html"><h4>الصفحة الرئيسية</h4></a>
+        <a href="courses.html"><h4>المواد الدراسية</h4></a>
+        <a href="Industrial engineering.html"><h4>عن الهندسة الصناعية</h4></a>
+        <a href="GPA Calculator.html"><h4>حساب المعدل</h4></a>
+        <a href="about indus.html"><h4>عن الموقع</h4></a>
+      </div>
+      <div class="menu">
+        <a href="index.html">الصفحة الرئيسية</a>
+        <a href="courses.html">المواد الدراسية</a>
+        <a href="Industrial engineering.html">عن الهندسة الصناعية</a>
+        <a href="GPA Calculator.html">حساب المعدل</a>
+        <a href="about indus.html">عن الموقع</a>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="info-card">
+      <h2>ما هي الهندسة الصناعية؟</h2>
+      <p>الهندسة الصناعية هي فرع من فروع الهندسة يهتم بتصميم، تحسين، وإدارة الأنظمة المتكاملة التي تشمل الأشخاص، المواد، المعلومات، المعدات، والطاقة. تعتمد الهندسة الصناعية على المعرفة والمهارات في العلوم الرياضية والفيزيائية والاجتماعية، بالإضافة إلى مبادئ وأساليب التحليل الهندسي والتصميم، لتحديد وتوقع وتقييم النتائج المترتبة على هذه الأنظمة.</p>
+    </div>
+    <div class="info-card">
+      <h2>أهم مجالات عمل المهندس الصناعي</h2>
+      <ul style="direction: rtl; text-align: right; color: #666;">
+        <li>تحسين العمليات والإنتاج (Operations & Production Optimization)</li>
+        <li>إدارة سلاسل الإمداد واللوجستيات (Supply Chain & Logistics Management)</li>
+        <li>هندسة الأنظمة وتحليل البيانات (Systems Engineering & Data Analytics)</li>
+        <li>إدارة المشاريع (Project Management)</li>
+        <li>الأتمة والتصنيع الذكي (Automation & Smart Manufacturing)</li>
+        <li>الهندسة البشرية (Human Factors & Ergonomics)</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h2>مهارات المهندس الصناعي</h2>
+      <ul style="direction: rtl; text-align: right; color: #666;">
+        <li>مهارات تحليلية: القدرة على تحليل البيانات وحل المشكلات المعقدة.</li>
+        <li>مهارات التواصل: القدرة على التواصل الفعال مع الأشخاص من مختلف الخلفيات.</li>
+        <li>مهارات العمل الجماعي: القدرة على العمل بشكل فعال ضمن فريق.</li>
+        <li>مهارات القيادة: القدرة على قيادة الفرق وتحفيزها.</li>
+        <li>مهارات إدارة المشاريع: القدرة على التخطيط والتنظيم وإدارة المشاريع.</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
