@@ -7,7 +7,7 @@ html, body {
 }
 
 body {
-    background: linear-gradient(90deg, #08507a, #222b61);
+    background: linear-gradient(90deg, #001f3f);
     font-family: 'Cairo', sans-serif;
     text-align: center;
     display: flex;
@@ -22,7 +22,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(90deg, #0b6192, #222b61);
+    background: linear-gradient(90deg, #001f3f);
     padding: 10px 20px;
     position: fixed;
     top: 0;
@@ -215,7 +215,7 @@ footer {
 /* البار الفاصل */
 .separator {
     width: 100%;
-    background: linear-gradient(90deg, #0b6192, #222b61); /* نفس لون البار العلوي */
+    background: linear-gradient(90deg, #001f3f); /* نفس لون البار العلوي */
     padding: 15px 0; /* زيادة الحشوة لجعل البار أكثر وضوحًا */
     text-align: center;
     color: white;
@@ -276,24 +276,37 @@ footer {
 }
 
 /* تحسين تصميم الدوائر */
+
+   /* تحويل الدوائر إلى بطاقات مستطيلة احترافية */
 .circle {
-    width: 150px;
-    height: 150px;
-    background-color: white; /* لون الخلفية أبيض */
-    border-radius: 50%;
+    width: 280px; /* عرض المستطيل */
+    height: auto; /* يحدد الطول بناءً على المحتوى */
+    min-height: 80px; /* أقل طول للمستطيل */
+    background: rgba(255, 255, 255, 0.1); /* شفافية زجاجية */
+    backdrop-filter: blur(10px); /* تأثير التغبيش الفخم */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* إطار ناعم */
+    border-radius: 15px; /* زوايا منحنية بدل الدائرة الكاملة */
     display: flex;
-    flex-direction: column;
+    flex-direction: row; /* النص والأيقونة بجانب بعض */
     justify-content: center;
     align-items: center;
-    color: #08507a; /* لون النص يتناسب مع التصميم */
-    font-size: 16px;
+    color: white; /* تغيير لون النص للأبيض ليناسب الشفافية */
+    font-size: 18px;
     font-weight: bold;
     text-decoration: none;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin: 10px auto;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* ظل خفيف */
+    transition: all 0.3s ease;
+    margin: 15px auto; /* مسافة بين البطاقات وتوسيطها */
+    padding: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+/* حركة عند تمرير الماوس */
+.circle:hover {
+    transform: translateY(-5px); /* ترتفع للأعلى قليلاً */
+    background: rgba(255, 255, 255, 0.2);
+    border-color: #ffd700; /* الإطار يصبح ذهبي عند اللمس */
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
 }
 
 .circle::before {
@@ -369,4 +382,69 @@ h1 {
     height: auto;      /* ضروري جداً لضمان عدم تمطيط الصورة */
     display: block;    /* لضمان استقرار العناصر حوله */
 }
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1; /* لجعلها خلف اللوجو والأزرار */
+    background-color: #001f3f; /* نفس لون خلفيتك الزرقاء */
+}
+/* حاوية التروس */
+.gears-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1; /* خلف المحتوى */
+    pointer-events: none;
+    opacity: 0.3; /* خفيفة جداً لتعطي فخامة */
+}
+
+/* شكل الترس الأساسي */
+.gear {
+    position: absolute;
+    border: 2px solid #ffd700; /* خط رفيع ذهبي */
+    border-radius: 50%;
+}
+
+/* الترس الأول (الكبير) */
+.g1 {
+    width: 300px;
+    height: 300px;
+    top: 10%;
+    left: -50px;
+    border-style: dashed; /* يعطي شكل أسنان الترس */
+    animation: rotate-gear 20s linear infinite;
+}
+
+/* الترس الثاني (المتوسط) يدور عكسه */
+.g2 {
+    width: 200px;
+    height: 200px;
+    top: 25%;
+    left: 180px;
+    border-style: dotted;
+    animation: rotate-gear-rev 15s linear infinite;
+}
+
+/* حركات الدوران */
+@keyframes rotate-gear {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes rotate-gear-rev {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
+}
+.navbar {
+    background: rgba(15, 23, 42, 0.8) !important; /* لون كحلي هندسي شفاف */
+    backdrop-filter: blur(12px); /* تأثير ضبابي عصري */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* خط نحيف جداً للفصل */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
 }

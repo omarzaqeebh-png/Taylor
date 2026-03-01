@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(90deg, #08507a, #222b61);
+    background: linear-gradient(90deg, #001f3f);
     min-height: 100vh;
     margin: 0;
     font-family: 'Cairo', sans-serif;
@@ -10,10 +10,11 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(90deg, #0b6192, #222b61);
+    background: linear-gradient(90deg, #001f3f);
     padding: 10px 20px;
     position: relative; /* لجعل القائمة المتنقلة تتبع الشريط العلوي */
     z-index: 100; /* التأكد من ظهور الشريط العلوي فوق العناصر الأخرى */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
 }
 
 .navbar img {
@@ -171,4 +172,5 @@ body {
     50% {
         transform: translateY(-5px);
     }
+    
 }

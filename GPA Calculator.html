@@ -13,13 +13,13 @@
         }
         
         body {
-            background: linear-gradient(135deg, #2a4a7a 0%, #1a3a6a 100%); /* خلفية زرقاء فاتحة متناسقة */
+            background: linear-gradient(135deg, #001f3f); /* خلفية زرقاء فاتحة متناسقة */
             min-height: 100vh;
             color: #333;
         }
         
         nav {
-            background: linear-gradient(135deg, #2a4a7a 0%, #1a3a6a 100%);
+            background: linear-gradient(135deg, #001f3f);
             padding: 15px 0;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
@@ -73,7 +73,7 @@
         .menu {
             display: none;
             flex-direction: column;
-            background-color: #2a4a7a;
+            background-color: #001f3f;
             position: absolute;
             top: 70px;
             right: 20px;
@@ -117,7 +117,7 @@
         }
         
         #gpaTable th {
-            background: linear-gradient(135deg, #4a7bd9 0%, #3a6bc8 100%);
+            background: linear-gradient(135deg, #001f3f);
             color: white;
             padding: 15px;
             text-align: center;
@@ -186,13 +186,13 @@
         }
         
         .add-btn {
-            background-color: #4a7bd9;
+            background-color: #001f3f;
             color: white;
             box-shadow: 0 4px 8px rgba(74, 123, 217, 0.3);
         }
         
         .add-btn:hover {
-            background-color: #3a6bc8;
+            background-color: #2a4a7a;
         }
         
         #result {
@@ -273,7 +273,7 @@
             padding: 15px;
             font-size: 18px;
             font-weight: bold;
-            color: #2a4a7a;
+            color: #001f3f;
             background-color: rgba(240, 247, 255, 0.7);
             border-radius: 10px;
             text-align: center;
@@ -281,13 +281,13 @@
         }
         
         .calculate-btn {
-            background: linear-gradient(135deg, #4a7bd9 0%, #3a6bc8 100%);
+            background: linear-gradient(135deg, #001f3f);
             color: white;
             box-shadow: 0 4px 8px rgba(74, 123, 217, 0.3);
         }
         
         .calculate-btn:hover {
-            background: linear-gradient(135deg, #3a6bc8 0%, #2a5ab7 100%);
+            background: linear-gradient(135deg, #2a4a7a);
         }
 
         @media (max-width: 768px) {
@@ -410,7 +410,12 @@
                     <option value="0.50">F</option>
                 </select>
             `;
-            cell3.innerHTML = `<input type="number" class="credits-input" min="1" value="3">`;
+            cell3.innerHTML = `
+<div class="quantity-wrapper">
+    <button type="button" onclick="this.nextElementSibling.stepDown()" class="step-btn">-</button>
+    <input type="number" class="credits-input" min="1" max="10" value="3" readonly>
+    <button type="button" onclick="this.previousElementSibling.stepUp()" class="step-btn">+</button>
+</div>`;
             cell4.innerHTML = `<button class="delete-btn" onclick="deleteCourse(this)">حذف</button>`;
 
             courseCount++;
