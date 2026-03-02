@@ -78,21 +78,19 @@ body {
 }
 
 .navbar-links-mobile {
-    display: none;
-    flex-direction: column;
-    gap: 10px;
-    position: absolute;
-    top: 70px;
-    right: 20px;
-    background: #001f3f;
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    opacity: 0;
-    transform: translateY(-10px);
-}
+    
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(90deg, #001f3f);
+      padding: 15px 30px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    }
 
 .navbar-links-mobile a {
     color: white;
