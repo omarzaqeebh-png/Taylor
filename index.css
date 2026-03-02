@@ -76,22 +76,22 @@ body {
     background-color: white;
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
-/* السطر 80 وما بعده */
+
 .navbar-links-mobile {
     display: none;
     flex-direction: column;
     gap: 10px;
-    position: fixed; /* غيرناها من absolute إلى fixed */
-    top: 0;          /* خلها 0 عشان تغطي الشاشة من فوق */
-    right: 0;
-    width: 100%;     /* عشان تضمن تغطية العرض كامل */
-    height: auto;
-    background-color: #001f3f !important; /* اللون الكحلي */
-    padding: 80px 20px 20px 20px; /* الـ 80px اللي فوق عشان ما تغطي على اللوجو */
-    border-radius: 0; /* في الجوال الأفضل تكون بدون حواف دائرية */
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background: #001f3f;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     z-index: 1000;
+    transition: opacity 0.3s ease, transform 0.3s ease;
     opacity: 0;
-    transition: all 0.3s ease;
+    transform: translateY(-10px);
 }
 
 .navbar-links-mobile a {
