@@ -104,12 +104,89 @@
     /* TEAM SECTION */
     .team-section{position:relative;z-index:2;padding:0 2rem 6rem;}
     .team-grid{max-width:760px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;}
-    .team-card{background:linear-gradient(145deg,rgba(0,22,45,.88),rgba(0,12,25,.96));border:1px solid var(--border);border-radius:var(--r-lg);padding:2.5rem 2rem;text-align:center;position:relative;overflow:hidden;backdrop-filter:blur(16px);transition:all .4s var(--ease);}
-    .team-card::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:200px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
-    .team-card:hover{border-color:var(--border2);transform:translateY(-8px);box-shadow:0 28px 70px rgba(0,0,0,.55),0 0 50px rgba(255,215,0,.06);}
-    .team-avatar{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,rgba(255,215,0,.2),rgba(255,215,0,.05));border:2px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 1.2rem;}
-    .team-name{font-family:'Cairo',sans-serif;font-size:1.15rem;font-weight:900;color:#fff;margin-bottom:.3rem;}
-    .team-role{font-size:.85rem;color:var(--gold-3);font-weight:600;}
+
+    /* Entire card is the anchor */
+    a.team-card{
+      display:block;text-decoration:none;color:inherit;
+      background:linear-gradient(145deg,rgba(0,22,45,.88),rgba(0,12,25,.96));
+      border:1px solid var(--border);border-radius:var(--r-lg);
+      padding:2.5rem 2rem;text-align:center;
+      position:relative;overflow:hidden;backdrop-filter:blur(16px);
+      transition:transform .42s var(--spring),border-color .35s var(--ease),box-shadow .42s var(--ease);
+      cursor:pointer;
+    }
+    a.team-card::before{
+      content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+      width:200px;height:1px;
+      background:linear-gradient(90deg,transparent,var(--gold),transparent);
+    }
+    /* Subtle bottom glow line on hover */
+    a.team-card::after{
+      content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+      width:0;height:1px;
+      background:linear-gradient(90deg,transparent,var(--gold),transparent);
+      transition:width .45s var(--ease);
+    }
+    a.team-card:hover{
+      border-color:var(--border2);
+      transform:translateY(-10px) scale(1.015);
+      box-shadow:0 32px 80px rgba(0,0,0,.6),0 0 60px rgba(255,215,0,.08),0 0 0 1px rgba(255,215,0,.12);
+    }
+    a.team-card:hover::after{width:180px;}
+
+    .team-avatar{
+      width:72px;height:72px;border-radius:50%;
+      background:linear-gradient(135deg,rgba(255,215,0,.2),rgba(255,215,0,.05));
+      border:2px solid var(--border2);
+      display:flex;align-items:center;justify-content:center;
+      font-size:2rem;margin:0 auto 1.2rem;
+      transition:border-color .35s,box-shadow .35s;
+    }
+    a.team-card:hover .team-avatar{
+      border-color:var(--gold);
+      box-shadow:0 0 22px rgba(255,215,0,.25);
+    }
+    .team-name-row{
+      display:inline-flex;align-items:center;justify-content:center;
+      gap:.55rem;margin-bottom:.3rem;
+    }
+    .team-name{font-family:'Cairo',sans-serif;font-size:1.15rem;font-weight:900;color:#fff;}
+
+    /* LinkedIn badge — corner */
+    .li-badge{
+      position:absolute;top:1rem;left:1rem; /* left = visual right in RTL layout, but absolute is physical */
+      width:32px;height:32px;border-radius:8px;
+      background:rgba(10,102,194,.18);border:1px solid rgba(10,102,194,.35);
+      display:flex;align-items:center;justify-content:center;
+      transition:background .35s var(--ease),border-color .35s,transform .42s var(--spring),box-shadow .35s;
+    }
+    .li-badge svg{width:16px;height:16px;fill:#5ba4cf;transition:fill .35s,transform .35s var(--spring);}
+    a.team-card:hover .li-badge{
+      background:rgba(10,102,194,.35);
+      border-color:rgba(10,102,194,.75);
+      transform:scale(1.18) rotate(-4deg);
+      box-shadow:0 4px 18px rgba(10,102,194,.4);
+    }
+    a.team-card:hover .li-badge svg{fill:#fff;transform:scale(1.1);}
+
+    /* Inline LinkedIn icon next to name */
+    .li-inline{display:inline-flex;align-items:center;flex-shrink:0;}
+    .li-inline svg{width:18px;height:18px;fill:rgba(91,164,207,.7);transition:fill .3s,transform .35s var(--spring);}
+    a.team-card:hover .li-inline svg{fill:#0a66c2;transform:scale(1.3);}
+
+    .team-role{font-size:.85rem;color:var(--gold-3);font-weight:600;margin-top:.25rem;}
+
+    /* "View profile" hint */
+    .team-hint{
+      display:inline-flex;align-items:center;gap:.4rem;
+      margin-top:1.1rem;font-size:.75rem;font-weight:700;
+      letter-spacing:.07em;color:rgba(91,164,207,.5);
+      text-transform:uppercase;
+      transition:color .35s,gap .35s var(--spring);
+    }
+    .team-hint svg{width:11px;height:11px;fill:currentColor;transition:transform .35s var(--spring);}
+    a.team-card:hover .team-hint{color:rgba(91,164,207,.9);gap:.65rem;}
+    a.team-card:hover .team-hint svg{transform:translateX(-3px);} /* RTL: arrow points left */
 
     /* SOCIAL */
     .sdock{position:fixed;left:1.5rem;bottom:2.5rem;z-index:900;display:flex;flex-direction:column;align-items:center;gap:.6rem;}
@@ -241,21 +318,67 @@
   <div class="sh rv">
     <div class="stag">خلف الكواليس</div>
     <h2 class="stitle">فريق <span>بناء الموقع</span></h2>
-    <p class="ssub">طلاب بنوا هذه المنصة من الصفر بشغف وإصرار لخدمة زملائهم في JUST</p>
+    <p class="ssub">طلاب بنوا هذه المنصة من الصفر بشغف وإصرار لخدمة زملائهم في القسم </p>
     <div class="sline"></div>
   </div>
   <div class="team-section">
     <div class="team-grid">
-      <div class="team-card rv d1">
-        <div class="team-avatar">⚙️</div>
-        <div class="team-name">عمر الزقيبة</div>
+
+      <!-- Omar -->
+      <a href="https://www.linkedin.com/in/omar-zaqeebh-241890384?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+         target="_blank" rel="noopener noreferrer"
+         class="team-card rv d1" aria-label="عمر الرقيبة — LinkedIn">
+
+        <!-- Corner LinkedIn badge -->
+        <div class="li-badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+        </div>
+
+        <div class="team-avatar">👷‍♂️</div>
+        <div class="team-name-row">
+          <span class="team-name">عمر الزقيبة</span>
+          <span class="li-inline" aria-hidden="true">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+          </span>
+        </div>
         <div class="team-role">هندسة صناعية</div>
-      </div>
-      <div class="team-card rv d2">
+        <div class="team-hint">
+          عرض الملف الشخصي
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+        </div>
+      </a>
+
+      <!-- Ghaith — add LinkedIn URL when available -->
+      <a 
+         target="_blank" rel="noopener noreferrer"
+         class="team-card rv d2" aria-label="غيث الخصاونة — LinkedIn">
+
+        <div class="li-badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+        </div>
+
         <div class="team-avatar">🤖</div>
-        <div class="team-name">غيث الخصاونة</div>
+        <div class="team-name-row">
+          <span class="team-name">غيث الخصاونة</span>
+          <span class="li-inline" aria-hidden="true">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+          </span>
+        </div>
         <div class="team-role">علم روبوتات</div>
-      </div>
+        <div class="team-hint">
+          عرض الملف الشخصي
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+        </div>
+      </a>
+
     </div>
   </div>
 
